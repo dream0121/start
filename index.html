@@ -1,36 +1,158 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-	<meta charset="utf-8">
-	<title>再活一次</title>
-	<link rel="stylesheet" href="template">
-		<style>
-		body {
-			text-align: center;
-		}
-		main {
-			margin: 0 auto;
-			max-width: 800px;
-		}
-		.bg-img {
-			display: block;
-			margin: 0 auto;
-		}
-	</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再活一次 | 人生下半场</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 500;
+        }
+        
+        .bg-img {
+            background: url('ico.png') center/cover no-repeat;
+            height: 300px;
+            border-radius: 8px;
+            margin: 2rem auto;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h1, .card h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .card a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+        
+        .card a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            background-color: white;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .bg-img {
+                height: 200px;
+            }
+        }
+    </style>
 </head>
 <body>
-	<div class="bg-img"></div>
-	<header>人生下半场（20250809-2070）</header>
-	<main>
-		<img src="ico.png" width="400" height="300">
-		<h1><a href="LifeGoal\LifeGoal.html">我的人生目标</a></h1>
-		<h1>日记列表</h1>
-		<h2><a href="LifeGoal\20250809.html">20250809</a></h2>
-		<h2><a href="LifeGoal\20250810.html">20250810</a></h2>
-
-	</main>
+    <header>
+        <h1>人生下半场（20250809-2070）</h1>
+    </header>
+    
+    <div class="container">
+        <div class="bg-img" title="个人标志"></div>
+        
+        <div class="card-container">
+            <div class="card">
+                <h1><a href="LifeGoal/LifeGoal.html">我的人生目标</a></h1>
+                <p>探索我的长期愿景和人生规划</p>
+            </div>
+            
+            <div class="card">
+                <h1>日记列表</h1>
+                <h2><a href="LifeGoal/20250809.html">20250809 - 重生之日</a></h2>
+                <h2><a href="LifeGoal/20250810.html">20250810 - 新的开始</a></h2>
+            </div>
+            
+            <!-- 新增的内容卡片 -->
+            <div class="card">
+                <h1>关于我</h1>
+                <p>一个追求自由与成长的灵魂</p>
+                <a href="about.html">了解更多 →</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Powered by <a href="about.html">再活一次</a></p>
+        <p>© 2025-2070 人生下半场计划</p>
+    </footer>
 </body>
 </html>
-<footer>
-	<p>Powered by <a href="about.html">再活一次</a></p>
-</footer>
