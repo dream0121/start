@@ -35,6 +35,15 @@
                 text-decoration: line-through;
                 opacity: 0.7;
             }
+            .special-item-enter {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            .special-item-enter-active {
+                opacity: 1;
+                transform: translateY(0);
+                transition: opacity 300ms, transform 300ms;
+            }
         }
     </style>
 </head>
@@ -136,17 +145,96 @@
                 </div>
             </section>
 
-            <!-- 3. 特别的事 -->
+            <!-- 3. 特别的事（图文列表形式） -->
             <section class="lg:col-span-3 bg-white rounded-xl p-6 card-shadow transition-all duration-300 hover:shadow-lg">
-                <h2 class="text-xl font-bold text-accent flex items-center mb-4">
-                    <i class="fa fa-star mr-2"></i>特别的事
-                </h2>
-                <div class="mb-4">
-                    <textarea id="special-things" rows="5" class="w-full p-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none" placeholder="记录今天发生的特别事情、感悟或值得纪念的瞬间..."></textarea>
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-accent flex items-center">
+                        <i class="fa fa-star mr-2"></i>特别的事
+                    </h2>
+                    <button id="add-special-item" class="bg-accent/10 hover:bg-accent/20 text-accent p-2 rounded-full transition-colors">
+                        <i class="fa fa-plus"></i> 添加事项
+                    </button>
                 </div>
+
+                <!-- 特别事项列表 -->
+                <div class="space-y-4 mb-6" id="special-list">
+                    <!-- 示例事项 -->
+                    <div class="special-item bg-neutral rounded-lg p-4 transition-all hover:shadow-md">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-sm font-medium text-accent">事项 1</span>
+                            <div class="flex space-x-2">
+                                <button class="move-up-special text-gray-400 hover:text-primary transition-colors" title="上移">
+                                    <i class="fa fa-arrow-up"></i>
+                                </button>
+                                <button class="move-down-special text-gray-400 hover:text-primary transition-colors" title="下移">
+                                    <i class="fa fa-arrow-down"></i>
+                                </button>
+                                <button class="delete-special text-gray-400 hover:text-red-500 transition-colors" title="删除">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <textarea class="special-content w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none mb-3" rows="2" placeholder="描述这件特别的事...">今天尝试了新的咖啡配方，味道非常惊艳！</textarea>
+                        <div class="flex items-center space-x-3">
+                            <label class="flex items-center cursor-pointer bg-gray-100 hover:bg-gray-200 transition-colors px-3 py-2 rounded-lg">
+                                <i class="fa fa-image mr-2 text-gray-500"></i>
+                                <span class="text-sm">添加图片</span>
+                                <input type="file" class="special-image-input hidden" accept="image/*">
+                            </label>
+                            <div class="special-image-preview flex flex-wrap gap-2 flex-1">
+                                <div class="image-container relative h-20 w-20 rounded-lg overflow-hidden border-2 border-gray-200">
+                                    <img src="https://picsum.photos/200/200?random=1" alt="咖啡图片" class="h-full w-full object-cover">
+                                    <button class="remove-image absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="special-item bg-neutral rounded-lg p-4 transition-all hover:shadow-md">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-sm font-medium text-accent">事项 2</span>
+                            <div class="flex space-x-2">
+                                <button class="move-up-special text-gray-400 hover:text-primary transition-colors" title="上移">
+                                    <i class="fa fa-arrow-up"></i>
+                                </button>
+                                <button class="move-down-special text-gray-400 hover:text-primary transition-colors" title="下移">
+                                    <i class="fa fa-arrow-down"></i>
+                                </button>
+                                <button class="delete-special text-gray-400 hover:text-red-500 transition-colors" title="删除">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <textarea class="special-content w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none mb-3" rows="2" placeholder="描述这件特别的事...">傍晚在公园散步时看到了美丽的晚霞，心情格外舒畅。</textarea>
+                        <div class="flex items-center space-x-3">
+                            <label class="flex items-center cursor-pointer bg-gray-100 hover:bg-gray-200 transition-colors px-3 py-2 rounded-lg">
+                                <i class="fa fa-image mr-2 text-gray-500"></i>
+                                <span class="text-sm">添加图片</span>
+                                <input type="file" class="special-image-input hidden" accept="image/*">
+                            </label>
+                            <div class="special-image-preview flex flex-wrap gap-2 flex-1">
+                                <div class="image-container relative h-20 w-20 rounded-lg overflow-hidden border-2 border-gray-200">
+                                    <img src="https://picsum.photos/200/200?random=2" alt="晚霞图片" class="h-full w-full object-cover">
+                                    <button class="remove-image absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                                <div class="image-container relative h-20 w-20 rounded-lg overflow-hidden border-2 border-gray-200">
+                                    <img src="https://picsum.photos/200/200?random=3" alt="公园图片" class="h-full w-full object-cover">
+                                    <button class="remove-image absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="flex justify-end space-x-3">
                     <button id="save-diary" class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg transition-colors flex items-center">
-                        <i class="fa fa-save mr-2"></i>保存日记
+                        <i class="fa fa-download mr-2"></i>下载日记
                     </button>
                     <button id="clear-diary" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-2 rounded-lg transition-colors flex items-center">
                         <i class="fa fa-refresh mr-2"></i>清空内容
@@ -209,6 +297,15 @@
             const now = new Date();
             const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
             document.getElementById('current-date').textContent = now.toLocaleDateString('zh-CN', options);
+        };
+
+        // 获取格式化日期（用于文件名：YYYYMMDD）
+        const getFormattedDate = () => {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            return `${year}${month}${day}`;
         };
 
         // 任务相关功能
@@ -357,16 +454,328 @@
             });
         };
 
-        // 日记保存和清空功能
+        // 特别的事 - 核心功能
+        const addSpecialItemBtn = document.getElementById('add-special-item');
+        const specialList = document.getElementById('special-list');
+
+        // 更新事项序号
+        const updateSpecialItemNumbers = () => {
+            const items = document.querySelectorAll('.special-item');
+            items.forEach((item, index) => {
+                item.querySelector('.text-accent.font-medium').textContent = `事项 ${index + 1}`;
+                // 控制上下移按钮状态
+                const moveUpBtn = item.querySelector('.move-up-special');
+                const moveDownBtn = item.querySelector('.move-down-special');
+                moveUpBtn.disabled = index === 0;
+                moveUpBtn.style.opacity = index === 0 ? '0.5' : '1';
+                moveDownBtn.disabled = index === items.length - 1;
+                moveDownBtn.style.opacity = index === items.length - 1 ? '0.5' : '1';
+            });
+        };
+
+        // 添加新的特别事项
+        const addSpecialItem = () => {
+            const itemCount = document.querySelectorAll('.special-item').length;
+            const newItem = document.createElement('div');
+            newItem.className = 'special-item bg-neutral rounded-lg p-4 transition-all hover:shadow-md special-item-enter';
+            newItem.innerHTML = `
+                <div class="flex justify-between items-start mb-3">
+                    <span class="text-sm font-medium text-accent">事项 ${itemCount + 1}</span>
+                    <div class="flex space-x-2">
+                        <button class="move-up-special text-gray-400 hover:text-primary transition-colors" title="上移">
+                            <i class="fa fa-arrow-up"></i>
+                        </button>
+                        <button class="move-down-special text-gray-400 hover:text-primary transition-colors" title="下移">
+                            <i class="fa fa-arrow-down"></i>
+                        </button>
+                        <button class="delete-special text-gray-400 hover:text-red-500 transition-colors" title="删除">
+                            <i class="fa fa-trash-o"></i>
+                        </button>
+                    </div>
+                </div>
+                <textarea class="special-content w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none mb-3" rows="2" placeholder="描述这件特别的事..."></textarea>
+                <div class="flex items-center space-x-3">
+                    <label class="flex items-center cursor-pointer bg-gray-100 hover:bg-gray-200 transition-colors px-3 py-2 rounded-lg">
+                        <i class="fa fa-image mr-2 text-gray-500"></i>
+                        <span class="text-sm">添加图片</span>
+                        <input type="file" class="special-image-input hidden" accept="image/*">
+                    </label>
+                    <div class="special-image-preview flex flex-wrap gap-2 flex-1"></div>
+                </div>
+            `;
+            specialList.appendChild(newItem);
+            
+            // 触发动画
+            setTimeout(() => {
+                newItem.classList.remove('special-item-enter');
+            }, 10);
+            
+            // 绑定事件
+            bindSpecialItemEvents(newItem);
+            // 更新序号
+            updateSpecialItemNumbers();
+        };
+
+        // 绑定特别事项事件
+        const bindSpecialItemEvents = (item) => {
+            const deleteBtn = item.querySelector('.delete-special');
+            const moveUpBtn = item.querySelector('.move-up-special');
+            const moveDownBtn = item.querySelector('.move-down-special');
+            const imageInput = item.querySelector('.special-image-input');
+            const imagePreview = item.querySelector('.special-image-preview');
+            const removeImageBtns = item.querySelectorAll('.remove-image');
+
+            // 删除事项
+            deleteBtn.addEventListener('click', () => {
+                item.classList.add('opacity-0', 'transform', 'translate-y-2');
+                setTimeout(() => {
+                    item.remove();
+                    updateSpecialItemNumbers();
+                }, 300);
+            });
+
+            // 上移事项
+            moveUpBtn.addEventListener('click', () => {
+                const prevSibling = item.previousElementSibling;
+                if (prevSibling) {
+                    specialList.insertBefore(item, prevSibling);
+                    updateSpecialItemNumbers();
+                }
+            });
+
+            // 下移事项
+            moveDownBtn.addEventListener('click', () => {
+                const nextSibling = item.nextElementSibling;
+                if (nextSibling) {
+                    specialList.insertBefore(nextSibling, item);
+                    updateSpecialItemNumbers();
+                }
+            });
+
+            // 图片上传预览
+            imageInput.addEventListener('change', (e) => {
+                const files = e.target.files;
+                if (files.length > 0) {
+                    Array.from(files).forEach(file => {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                            const imageContainer = document.createElement('div');
+                            imageContainer.className = 'image-container relative h-20 w-20 rounded-lg overflow-hidden border-2 border-gray-200';
+                            imageContainer.innerHTML = `
+                                <img src="${event.target.result}" alt="预览图片" class="h-full w-full object-cover">
+                                <button class="remove-image absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            `;
+                            imagePreview.appendChild(imageContainer);
+                            
+                            // 绑定删除图片事件
+                            imageContainer.querySelector('.remove-image').addEventListener('click', () => {
+                                imageContainer.classList.add('opacity-0');
+                                setTimeout(() => {
+                                    imageContainer.remove();
+                                }, 300);
+                            });
+                        };
+                        reader.readAsDataURL(file);
+                    });
+                    // 清空文件输入，允许重复选择同一文件
+                    imageInput.value = '';
+                }
+            });
+
+            // 绑定现有图片删除事件
+            removeImageBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const container = btn.closest('.image-container');
+                    container.classList.add('opacity-0');
+                    setTimeout(() => {
+                        container.remove();
+                    }, 300);
+                });
+            });
+        };
+
+        // 添加特别事项按钮事件
+        addSpecialItemBtn.addEventListener('click', addSpecialItem);
+
+        // 日记下载和清空功能
         const saveDiaryBtn = document.getElementById('save-diary');
         const clearDiaryBtn = document.getElementById('clear-diary');
-        const specialThings = document.getElementById('special-things');
 
-        // 保存日记
-        saveDiaryBtn.addEventListener('click', () => {
-            // 这里可以添加本地存储或后端保存逻辑
-            alert('日记保存成功！');
-        });
+        // 下载日记为HTML文件（核心新增功能）
+        const downloadDiaryAsHTML = () => {
+            // 1. 收集当前所有日记数据
+            const diaryData = {
+                date: document.getElementById('current-date').textContent,
+                tasks: Array.from(document.querySelectorAll('.task-item')).map(item => ({
+                    content: item.querySelector('span').textContent,
+                    completed: item.querySelector('.task-checkbox').checked
+                })),
+                schedules: Array.from(document.querySelectorAll('.schedule-item')).map(item => {
+                    const timeEl = item.querySelector('.bg-secondary\\/20, .bg-accent\\/20, .bg-green-500\\/20, .bg-amber-500\\/20, .bg-purple-500\\/20, .bg-red-500\\/20');
+                    return {
+                        time: timeEl ? timeEl.textContent : '',
+                        title: item.querySelector('p.text-gray-700').textContent,
+                        note: item.querySelector('p.text-sm.text-gray-500')?.textContent || '',
+                        borderColor: item.classList.find(c => c.startsWith('border-') && !c.includes('border-l-4'))
+                    };
+                }),
+                specialThings: Array.from(document.querySelectorAll('.special-item')).map(item => ({
+                    content: item.querySelector('.special-content').value,
+                    images: Array.from(item.querySelectorAll('.image-container img')).map(img => img.src)
+                }))
+            };
+
+            // 2. 构建HTML模板（保持原样式和结构）
+            const htmlTemplate = `
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的每日日记 - ${getFormattedDate()}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#EC4899',
+                        neutral: '#F3F4F6',
+                        accent: '#06B6D4',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .card-shadow {
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+            }
+            .task-complete {
+                text-decoration: line-through;
+                opacity: 0.7;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="mb-8 text-center">
+            <h1 class="text-[clamp(2rem,5vw,3rem)] font-bold text-primary mb-2">
+                <i class="fa fa-book mr-2"></i>我的每日日记
+            </h1>
+            <div class="text-xl text-gray-500">${diaryData.date}</div>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- 每日任务打卡 -->
+            <section class="lg:col-span-1 bg-white rounded-xl p-6 card-shadow">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-bold text-primary flex items-center">
+                        <i class="fa fa-check-square-o mr-2"></i>每日任务打卡
+                    </h2>
+                </div>
+                <div class="space-y-3">
+                    ${diaryData.tasks.map(task => `
+                        <div class="task-item flex items-center justify-between p-3 bg-neutral rounded-lg">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" class="task-checkbox h-5 w-5 text-primary rounded border-gray-300 focus:ring-primary" ${task.completed ? 'checked' : ''} disabled>
+                                <span class="ml-2 ${task.completed ? 'task-complete' : ''}">${task.content}</span>
+                            </label>
+                        </div>
+                    `).join('')}
+                </div>
+            </section>
+
+            <!-- 日程安排 -->
+            <section class="lg:col-span-2 bg-white rounded-xl p-6 card-shadow">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-bold text-secondary flex items-center">
+                        <i class="fa fa-calendar mr-2"></i>日程安排
+                    </h2>
+                </div>
+                <div class="space-y-4">
+                    ${diaryData.schedules.map(schedule => `
+                        <div class="schedule-item p-4 bg-neutral rounded-lg border-l-4 ${schedule.borderColor || 'border-secondary'}">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-sm font-medium bg-${schedule.borderColor || 'secondary'}/20 text-${schedule.borderColor || 'secondary'} px-2 py-1 rounded">${schedule.time}</span>
+                            </div>
+                            <p class="text-gray-700">${schedule.title}</p>
+                            ${schedule.note ? `<p class="text-sm text-gray-500 mt-1">${schedule.note}</p>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+            </section>
+
+            <!-- 特别的事 -->
+            <section class="lg:col-span-3 bg-white rounded-xl p-6 card-shadow">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-accent flex items-center">
+                        <i class="fa fa-star mr-2"></i>特别的事
+                    </h2>
+                </div>
+                <div class="space-y-4 mb-6">
+                    ${diaryData.specialThings.map((thing, index) => `
+                        <div class="special-item bg-neutral rounded-lg p-4 hover:shadow-md">
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="text-sm font-medium text-accent">事项 ${index + 1}</span>
+                            </div>
+                            <textarea class="special-content w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent resize-none mb-3" rows="2" disabled>${thing.content || ''}</textarea>
+                            <div class="flex items-center space-x-3">
+                                <div class="special-image-preview flex flex-wrap gap-2 flex-1">
+                                    ${thing.images.map(img => `
+                                        <div class="image-container relative h-20 w-20 rounded-lg overflow-hidden border-2 border-gray-200">
+                                            <img src="${img}" alt="日记图片" class="h-full w-full object-cover">
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </section>
+        </main>
+
+        <footer class="mt-12 text-center text-gray-500 text-sm">
+            <p>© 2025 我的每日日记 | 记录生活中的每一个精彩瞬间</p>
+            <p class="mt-1">生成时间：${new Date().toLocaleString('zh-CN')}</p>
+        </footer>
+    </div>
+</body>
+</html>
+            `;
+
+            // 3. 创建下载链接并触发下载
+            const blob = new Blob([htmlTemplate], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${getFormattedDate()}.html`; // 文件名格式：YYYYMMDD.html
+            document.body.appendChild(a);
+            a.click();
+            
+            // 4. 清理资源
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+
+            alert(`日记已成功下载！文件名：${getFormattedDate()}.html`);
+        };
+
+        // 保存日记（下载HTML）按钮事件
+        saveDiaryBtn.addEventListener('click', downloadDiaryAsHTML);
 
         // 清空内容
         clearDiaryBtn.addEventListener('click', () => {
@@ -376,7 +785,7 @@
                 // 清空日程
                 document.querySelectorAll('.schedule-item').forEach(item => item.remove());
                 // 清空特别的事
-                specialThings.value = '';
+                document.querySelectorAll('.special-item').forEach(item => item.remove());
             }
         });
 
@@ -393,6 +802,14 @@
             document.querySelectorAll('.schedule-item').forEach(scheduleItem => {
                 bindScheduleEvents(scheduleItem);
             });
+
+            // 绑定现有特别事项事件
+            document.querySelectorAll('.special-item').forEach(item => {
+                bindSpecialItemEvents(item);
+            });
+
+            // 更新特别事项序号
+            updateSpecialItemNumbers();
 
             // 点击模态框外部关闭
             taskModal.addEventListener('click', (e) => {
