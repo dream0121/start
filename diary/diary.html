@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日期导航与内容展示</title>
+  <!-- 引入Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 引入Font Awesome图标 -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 自定义配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#6B7280',
+            accent: '#36D399',
+            neutral: '#F3F4F6',
+            dark: '#1F2937'
+          },
+          fontFamily: {
+            inter: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .transition-height {
+        transition: max-height 0.3s ease-in-out;
+      }
+      .scrollbar-hide {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .date-item-active {
+        @apply bg-primary/10 text-primary border-l-4 border-primary;
+      }
+    }
+  </style>
+</head>
+<body class="font-inter bg-gray-50 text-dark min-h-screen flex flex-col">
+  <!-- 顶部导航栏 -->
+  <header class="bg-white shadow-sm z-10">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-primary flex items-center">
+        <i class="fa fa-calendar-check-o mr-2"></i>
+        日期导航系统
+      </h1>
+      <div class="flex items-center space-x-4">
+        <button id="toggleSidebar" class="md:hidden text-gray-600 hover:text-primary transition-colors">
+          <i class="fa fa-bars text-xl"></i>
+        </button>
+        <button class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm flex items-center hover:bg-primary/20 transition-colors">
+          <i class="fa fa-refresh mr-1"></i> 刷新
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主内容区 -->
+  <main class="flex flex-1 overflow-hidden">
+    <!-- 左侧日期列表 -->
+    <aside id="sidebar" class="w-64 bg-white shadow-md z-20 transform -translate-x-full md:translate-x-0 fixed md:relative h-[calc(100vh-64px)] transition-transform duration-300 ease-in-out overflow-hidden">
+      <div class="p-4 border-b">
+        <h2 class="font-semibold text-lg flex items-center justify-between">
+          <span>日期导航</span>
+          <button id="collapseAll" class="text-secondary hover:text-primary transition-colors">
+            <i class="fa fa-compress"></i>
+          </button>
+        </h2>
+      </div>
+      
+      <!-- 日期列表容器 -->
+      <div class="overflow-y-auto scrollbar-hide h-[calc(100%-60px)]">
+        <div class="p-2">
+          <!-- 2025年 -->
+          <div class="mb-4">
+            <div class="year-header flex items-center justify-between p-2 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors">
+              <span class="font-medium">2025年</span>
+              <i class="fa fa-chevron-down text-xs text-secondary transition-transform duration-300"></i>
+            </div>
+            <div class="year-content pl-4 max-h-0 overflow-hidden transition-height">
+              <!-- 11月 -->
+              <div class="mb-3">
+                <div class="month-header flex items-center justify-between p-1 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors">
+                  <span class="text-sm">11月</span>
+                  <i class="fa fa-chevron-down text-xs text-secondary transition-transform duration-300"></i>
+                </div>
+                <div class="month-content pl-2 max-h-0 overflow-hidden transition-height">
+
+                  </a>
+                  <a href="https://dream0121.github.io/start/diary/20251124.html" class="date-item block p-2 rounded-lg text-sm hover:bg-gray-100 transition-colors mb-1" target="contentFrame">
+                    11月24日
+                  </a>
+                  <a href="https://example.com/20251125" class="date-item block p-2 rounded-lg text-sm hover:bg-gray-100 transition-colors mb-1 date-item-active" target="contentFrame">
+                    11月25日
+                  </a>
+                  <a href="https://example.com/20251126" class="date-item block p-2 rounded-lg text-sm hover:bg-gray-100 transition-colors mb-1" target="contentFrame">
+                    11月26日
+                  </a>
+                  <a href="https://example.com/20251127" class="date-item block p-2 rounded-lg text-sm hover:bg-gray-100 transition-colors mb-1" target="contentFrame">
+                    11月27日
+                  </a>
+                </div>
+              </div>
+              
+              <!-- 12月 -->
+              <div class="mb-3">
+                <div class="month-header flex items-center justify-between p-1 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors">
+                  <span class="text-sm">12月</span>
+                  <i class="fa fa-chevron-down text-xs text-secondary transition-transform duration-300"></i>
+                </div>
+                <div class="month-content pl-2 max-h-0 overflow-hidden transition-height">
+                  <a href="https://example.com/20251201" class="date-item block p-2 rounded-lg text-sm hover:bg-gray-100 transition-colors mb-1" target="contentFrame">
+                    12月01日
+                  </a>
+                  <a href="https://example.com/20251202" class="date-item block p-2 rounded-lg text-sm hover:bg-gray-100 transition-colors mb-1" target="contentFrame">
+                    12月02日
+                  </a>
+                  <a href="https://example.com/20251203" class="date-item block p-2 rounded-lg text-sm hover:bg-gray-100 transition-colors mb-1" target="contentFrame">
+                    12月03日
+                  </a>
+                  <a href="https://example.com/20251204" class="date-item block p-2 rounded-lg text-sm hover:bg-gray-100 transition-colors mb-1" target="contentFrame">
+                    12月04日
+                  </a>
+                  <a href="https://example.com/20251205" class="date-item block p-2 rounded-lg text-sm hover:bg-gray-100 transition-colors mb-1" target="contentFrame">
+                    12月05日
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+        </div>
+      </div>
+    </aside>
+    
+    <!-- 右侧内容区域 -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- 内容头部 -->
+      <div class="bg-white p-4 border-b flex items-center justify-between">
+        <h2 class="text-lg font-medium" id="contentTitle">11月25日 内容</h2>
+        <div class="flex items-center space-x-2">
+          <button id="refreshFrame" class="text-secondary hover:text-primary transition-colors p-1 rounded hover:bg-gray-100">
+            <i class="fa fa-refresh"></i>
+          </button>
+          <button id="openInNewTab" class="text-secondary hover:text-primary transition-colors p-1 rounded hover:bg-gray-100">
+            <i class="fa fa-external-link"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 加载状态 -->
+      <div id="loadingIndicator" class="flex-1 flex items-center justify-center bg-gray-50">
+        <div class="text-center">
+          <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary mb-4"></div>
+          <p class="text-gray-500">加载中...</p>
+        </div>
+      </div>
+      
+      <!-- iframe内容区域 -->
+      <iframe 
+        id="contentFrame" 
+        name="contentFrame" 
+        class="flex-1 w-full border-0 hidden"
+        src="https://example.com/20251125"
+        onload="handleIframeLoad()"
+      ></iframe>
+    </div>
+  </main>
+
+  <!-- 遮罩层（移动端） -->
+  <div id="overlay" class="fixed inset-0 bg-black/50 z-10 hidden md:hidden" onclick="toggleSidebar()"></div>
+
+  <script>
+    // 初始化变量
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const toggleSidebarBtn = document.getElementById('toggleSidebar');
+    const refreshFrameBtn = document.getElementById('refreshFrame');
+    const openInNewTabBtn = document.getElementById('openInNewTab');
+    const collapseAllBtn = document.getElementById('collapseAll');
+    const contentFrame = document.getElementById('contentFrame');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    const contentTitle = document.getElementById('contentTitle');
+    let currentUrl = contentFrame.src;
+    
+    // 侧边栏切换（移动端）
+    function toggleSidebar() {
+      sidebar.classList.toggle('-translate-x-full');
+      overlay.classList.toggle('hidden');
+      document.body.classList.toggle('overflow-hidden');
+    }
+    
+    toggleSidebarBtn.addEventListener('click', toggleSidebar);
+    
+    // 年份折叠/展开
+    document.querySelectorAll('.year-header').forEach(header => {
+      header.addEventListener('click', function() {
+        const content = this.nextElementSibling;
+        const icon = this.querySelector('i');
+        
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+    
+    // 月份折叠/展开
+    document.querySelectorAll('.month-header').forEach(header => {
+      header.addEventListener('click', function() {
+        const content = this.nextElementSibling;
+        const icon = this.querySelector('i');
+        
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+    
+    // 日期项点击事件
+    document.querySelectorAll('.date-item').forEach(item => {
+      item.addEventListener('click', function() {
+        // 移除其他日期项的激活状态
+        document.querySelectorAll('.date-item').forEach(i => {
+          i.classList.remove('date-item-active');
+        });
+        
+        // 添加当前日期项的激活状态
+        this.classList.add('date-item-active');
+        
+        // 更新标题
+        const dateText = this.textContent.trim();
+        contentTitle.textContent = `${dateText} 内容`;
+        
+        // 更新当前URL
+        currentUrl = this.href;
+        
+        // 在移动端点击后关闭侧边栏
+        if (window.innerWidth < 768) {
+          toggleSidebar();
+        }
+        
+        // 显示加载状态
+        showLoading();
+      });
+    });
+    
+    // iframe加载处理
+    function handleIframeLoad() {
+      loadingIndicator.classList.add('hidden');
+      contentFrame.classList.remove('hidden');
+    }
+    
+    // 显示加载状态
+    function showLoading() {
+      contentFrame.classList.add('hidden');
+      loadingIndicator.classList.remove('hidden');
+    }
+    
+    // 刷新iframe
+    refreshFrameBtn.addEventListener('click', function() {
+      showLoading();
+      contentFrame.src = currentUrl;
+    });
+    
+    // 在新标签页打开
+    openInNewTabBtn.addEventListener('click', function() {
+      window.open(currentUrl, '_blank');
+    });
+    
+    // 全部折叠/展开
+    let isAllExpanded = false;
+    collapseAllBtn.addEventListener('click', function() {
+      const icon = this.querySelector('i');
+      
+      if (isAllExpanded) {
+        // 全部折叠
+        document.querySelectorAll('.year-content, .month-content').forEach(content => {
+          content.style.maxHeight = null;
+        });
+        document.querySelectorAll('.year-header i, .month-header i').forEach(i => {
+          i.style.transform = 'rotate(0deg)';
+        });
+        icon.classList.remove('fa-expand');
+        icon.classList.add('fa-compress');
+      } else {
+        // 全部展开
+        document.querySelectorAll('.year-content').forEach(content => {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        });
+        document.querySelectorAll('.month-content').forEach(content => {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        });
+        document.querySelectorAll('.year-header i, .month-header i').forEach(i => {
+          i.style.transform = 'rotate(180deg)';
+        });
+        icon.classList.remove('fa-compress');
+        icon.classList.add('fa-expand');
+      }
+      
+      isAllExpanded = !isAllExpanded;
+    });
+    
+    // 初始化 - 展开当前年份和月份
+    window.addEventListener('load', function() {
+      // 展开2025年
+      const currentYearContent = document.querySelector('.year-content');
+      currentYearContent.style.maxHeight = currentYearContent.scrollHeight + 'px';
+      document.querySelector('.year-header i').style.transform = 'rotate(180deg)';
+      
+      // 展开11月
+      const currentMonthContent = document.querySelector('.month-content');
+      currentMonthContent.style.maxHeight = currentMonthContent.scrollHeight + 'px';
+      document.querySelector('.month-header i').style.transform = 'rotate(180deg)';
+    });
+  </script>
+</body>
+</html>
