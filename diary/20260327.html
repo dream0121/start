@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diaury - 20260327</title>
       <style>
+        body {
+          background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+          font-family: 'Arial', sans-serif;
+          margin: 0;
+          padding: 20px;
+          min-height: 100vh;
+        }
+
         p {
           line-height: 1.8;
           text-indent: 2em;
@@ -13,43 +21,90 @@
         }
 
         .diary-title {
-          font-size: 24px;
-          font-weight: normal;
+          font-size: 28px;
+          font-weight: bold;
           margin-bottom: 10px;
-          color:#222;
+          color: #333;
+          text-align: center;
         }
         
         .diary-date {
-          font-size: 14px;
-          color: #888;
+          font-size: 16px;
+          color: #666;
           margin-bottom: 30px;
+          text-align: center;
         }
 
         .diary-content {
           font-size: 16px;
           text-align: justify;
-        }
-
-        div.diary-content {
-          width: 100%;
+          background: rgba(255, 255, 255, 0.9);
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          max-width: 800px;
           margin: 0 auto;
-          text-align: left;
-          
-
         }
 
-        
+        h2 {
+          color: #444;
+          border-bottom: 2px solid #ddd;
+          padding-bottom: 5px;
+          margin-top: 30px;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          border: 1px solid #ddd;
+          margin-top: 10px;
+        }
+
+        th, td {
+          border: 1px solid #ddd;
+          padding: 8px 12px;
+          text-align: left;
+        }
+
+        th {
+          background-color: #f2f2f2;
+          font-weight: bold;
+        }
+
+        td:first-child,
+        th:first-child {
+          text-align: center;
+          width: 20%;
+        }
+
       </style>
 </head>
 <body>
     <!-- 这里可以添加你的内容 -->
     <h1 class="diary-title">2026年3月27日</h1>
-    <p class="diary-date">星期六</p>    
+    <p class="diary-date">星期五</p>    
     <div class="diary-content" >
-        <h2>重要事项</h2>
-        <p>1. 让老
-
-        </p>
+        <h2>‼️重要事项</h2>
+        <p>XXX</p>
+        <h2>📖 Daily log</h2>
+            <table>
+                <tr>
+                    <td>时间</td><td>事项</td><td>备注</td>
+                </tr>
+                <tr>
+                    <td>5:40</td><td>起床晨跑</td><td>---</td>
+                </tr>
+                <tr>
+                    <td>6:00</td><td>吃早饭</td><td>---</td>
+                </tr>
+            </table>
+        <h2>🎯 Plan for tomorrow</h2>
+        <p>XXX</p>
+        <h2>🎉 New achievement</h2>
+        <p>XXX</p>
+        <h2>🎊 New milestone</h2>
+        <h2>🎈 New event</h2>
+        <p>XXX</p>
     </div>
 </body>
 </html>
