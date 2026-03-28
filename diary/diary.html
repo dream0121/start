@@ -139,6 +139,42 @@
             .sidebar {
                 padding: 16px;
             }
+
+            .frame-wrapper {
+                min-height: 72vh;
+            }
+        }
+
+        .mobile-select {
+            display: none;
+            margin-bottom: 16px;
+        }
+
+        .mobile-select label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+
+        .mobile-select select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            background: #ffffff;
+            color: #1f2937;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 900px) {
+            .mobile-select {
+                display: block;
+            }
+
+            .sidebar {
+                order: -1;
+            }
         }
     </style>
 </head>
@@ -161,10 +197,36 @@
             <header>
                 <h2>请选择左侧日记查看内容</h2>
             </header>
+            <div class="mobile-select">
+                <label for="diarySelect">选择日记</label>
+                <select id="diarySelect" aria-label="选择日记">
+                    <option value="20260309.html">20260309</option>
+                    <option value="20260310.html">20260310</option>
+                    <option value="20260311.html">20260311</option>
+                    <option value="20260313.html">20260313</option>
+                    <option value="20260325.html">20260325</option>
+                    <option value="20260326.html">20260326</option>
+                    <option value="20260327.html">20260327</option>
+                </select>
+            </div>
             <div class="frame-wrapper">
                 <iframe name="diaryFrame" src="20260309.html"></iframe>
             </div>
         </main>
     </div>
+    <script>
+        const diarySelect = document.getElementById('diarySelect');
+        const diaryFrame = window.frames.diaryFrame;
+        const headerTitle = document.querySelector('.content header h2');
+
+        if (diarySelect) {
+            diarySelect.addEventListener('change', function () {
+                const value = this.value;
+                const label = this.options[this.selectedIndex].text;
+                document.querySelector('iframe[name="diaryFrame"]').src = value;
+                headerTitle.textContent = `正在阅读：${label}`;
+            });
+        }
+    </script>
 </body>
 </html>
