@@ -1,18 +1,170 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diary List</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            background: #eef2f7;
+            color: #1f2937;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #ffffff;
+            border-right: 1px solid #d1d5db;
+            padding: 24px;
+            box-sizing: border-box;
+        }
+
+        .sidebar h1 {
+            margin: 0 0 20px;
+            font-size: 1.4rem;
+            letter-spacing: 0.03em;
+        }
+
+        .sidebar nav a {
+            display: block;
+            color: #2563eb;
+            text-decoration: none;
+            margin: 6px 0;
+            padding: 10px 12px;
+            border-radius: 8px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .sidebar nav a:hover {
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        .sidebar .note {
+            margin-top: 24px;
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #f8fafc;
+            padding: 24px;
+            box-sizing: border-box;
+        }
+
+        .content header {
+            margin-bottom: 16px;
+        }
+
+        .content header h2 {
+            margin: 0;
+            font-size: 1.6rem;
+        }
+
+        .content .frame-wrapper {
+            flex: 1;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #ffffff;
+            min-height: 60vh;
+        }
+
+        .content iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            min-height: 100%;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #d1d5db;
+                padding: 18px;
+            }
+
+            .content {
+                padding: 18px;
+            }
+
+            .sidebar nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .sidebar nav a {
+                flex: 1 1 calc(50% - 10px);
+                margin: 0;
+            }
+
+            .sidebar nav a:nth-child(2n) {
+                margin-right: 0;
+            }
+
+            .content header h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .sidebar nav a {
+                flex: 1 1 100%;
+            }
+
+            .sidebar h1 {
+                font-size: 1.2rem;
+            }
+
+            .content {
+                padding: 14px;
+            }
+
+            .sidebar {
+                padding: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>日记列表</h1>
-  <p><a href="20260309.html">20260309</a>
-      <br><a href=20260310.html>20260310</a>
-      <br><a href=20260311.html>20260311</a>
-  </p>
-  <p style="color:red;margin-left:20px;">这是一个加了 style的段落</p>
-
-
-
-    <h2 style="background-color:yellow;text-align:center;">加了 style的黄色的/居中的二级标题</h2>
+    <div class="container">
+        <aside class="sidebar">
+            <h1>日记列表</h1>
+            <nav>
+                <a href="20260309.html" target="diaryFrame">20260309</a>
+                <a href="20260310.html" target="diaryFrame">20260310</a>
+                <a href="20260311.html" target="diaryFrame">20260311</a>
+                <a href="20260313.html" target="diaryFrame">20260313</a>
+                <a href="20260325.html" target="diaryFrame">20260325</a>
+                <a href="20260326.html" target="diaryFrame">20260326</a>
+                <a href="20260327.html" target="diaryFrame">20260327</a>
+            </nav>
+            <p class="note">点击左侧链接后，日记内容会在右侧显示，阅读更方便。</p>
+        </aside>
+        <main class="content">
+            <header>
+                <h2>请选择左侧日记查看内容</h2>
+            </header>
+            <div class="frame-wrapper">
+                <iframe name="diaryFrame" src="20260309.html"></iframe>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
