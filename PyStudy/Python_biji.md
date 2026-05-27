@@ -360,8 +360,100 @@ if (n:=len(name))>1:
 > 3. sorted()函数可以指定是否降序排序，而sort()方法只能使用reverse参数。
 
 ## 6.7 列表推导式
+> 列表推导式是一种简洁的创建列表的方法，快速生成列表，或者根据某个列表生成满足指定需求的列表。
+```python       
+List = [x**2 for x in range(10)]
+print(List)
+```
+
+# 7 元组
+## 7.1 元组的创建和删除
+```python
+tuple1 = (1, 2, 3, 4, 5)
+tuple2 = tuple(range(1, 6))
+```
+
+```python
+#如果要创建的元组只包括一个元素，则需要在定义元素时，在元素的后面加一个“，“，否则Python会将元素视为一个单独的变量。
+tuple3 = ("abc",)  #这个是元组
+tuple4 = ("abc") #这个是字符串
+```
+
+**创建空元组**
+在python中，空元组可以使用()来表示，也可以使用tuple()函数来表示。
+空元组可以应用在为函数传递一个空值或者返回空值时。例如，定义一个函数必须传递一个元组类型的值，但不想为它传递一组数据，那么就可以创建一个空元组传递给它。
+
+```python
+tuple5 = ()
+tuple6 = tuple()
+```
+**tuple()函数创建数值元组**
+```python
+# tuple(data)
+tuple7 = tuple([1, 2, 3, 4, 5])
+tuple8 = tuple((1, 2, 3, 4, 5))
+print(tuple(range(1, 6)))
+```
+
+**删除元组**
+```python
+del tuple1
+```
+
+## 7.2 访问和修改元组元素
+```python
+tuple1 = (1, 2, 3, 4, 5)
+print(tuple1)       # 输出结果：(1, 2, 3, 4, 5)
+print(tuple1[0])  # 输出结果：1
+print(tuple1[1])  # 输出结果：2
+print(tuple1[2])  # 输出结果：3
+print(tuple1[3])  # 输出结果：4
+```
+
+**元组是不可变序列，所以不能对它的单个元素值进行修改。但可以对元组重新赋值。**
+**另外，还可以对元组进行连接组合**
+
+## 7.3 元组推导式
+**同列表，只是用（）代换[]**
+
+# 8 字符串和正则表达式
+## 8.1 字符串的常用操作
+### 8.1.1 连接字符串“+“、合并字符串“join()”
+```python
+list_friengs = ["Tom", "Jerry", "Spike", "Tyke", "Spike"]
+str_friends = '+'.join(list_friengs)
+print(str_friends)
+# 输出结果：Tom+Jerry+Spike+Tyke+Spike
+```
+### 8.1.2 计算字符串的长度len()
+
+### 8.1.3 截取字符串 String[start:end : step]
+```python
+str_friends = "Tom+Jerry+Spike+Tyke+Spike"
+print(str_friends[0:5])  # 输出结果：Tom+
+```
+### 8.1.4  翻转字符串 
+> oldstr[::-1]
 
 
+### 8.1.4 分割字符串“split()”
+> str.split(‘分隔符’，‘最大分割次数’)
 
+### 8.1.5 查找“count()”或替换字符串“replace()”
+**count()方法，返回出现的次数，不存在则返回 0**
+**find()方法，返回第一次出现的索引，不存在则返回 -1**
+**index()方法，返回第一次出现的索引，不存在则抛出异常**
+**rfind()方法，返回最后一次出现的索引，不存在则返回 -1**
+**startwith()方法，返回是否以指定字符串开头**
+**endswith()方法，返回是否以指定字符串结尾**
+**replace()方法，返回替换后的字符串，不存在则返回原字符串**
+**lower()方法，将字符串转换为小写**
+**upper()方法，将字符串转换为大写**
+
+**title()方法，将字符串的每个单词的首字母转换为大写**
+**strip()方法，去除字符串两端的空格**
+**lstrip()方法，去除字符串左边的空格**
+**rstrip()方法，去除字符串右边的空格**
+**splitlines()方法，将字符串按行分割成列表**
 
 
