@@ -463,5 +463,71 @@ print(str_friends[0:5])  # 输出结果：Tom+
 
 
 ## 8.2 正则表达式
+**---有难度，改天回来再学---**
 
+# 9 字典与集合
+## 9.1 字典
+> 字典是一种无序的集合，可以包含任意类型的键值对，键值对之间用冒号“:”连接，键值对之间用逗号“,”分隔，键值对之间用花括号“{}”包围。
 
+### 9.1.1 创建、删除字典
+```python
+dict1 = {"name": "Tom", "age": 20, "city": "Shanghai"}
+```
+
+```python
+dictionary = {} 或者 dictionary = dict()
+```
+#### 9.1.1.1 通过映射函数创建字典
+```python
+name = ["Tom", "Jerry", "Spike", "Tyke", "Spike"] #作为键的列表
+age = [20, 21, 22, 23, 24]  #作为值的列表
+dict1 = dict(zip(name, age)) #将键值对组合成字典
+print(dict1)
+```
+#### 9.1.1.2 通过给定的关键字参数创建字典
+```python
+dict1 = dict(name="Tom", age=20, city="Shanghai")
+print(dict1)
+```
+
+**用dict对象的fromkeys()方法创建空的字典**
+```python
+name_list = ["Tom", "Jerry", "Spike", "Tyke", "Spike"]
+dict1 = dict.fromkeys(name_list)
+print(dict1)
+```
+>运行结果：{'Tom': None, 'Jerry': None, 'Spike': None, 'Tyke': None, 'Spike': None}
+
+### 9.1.2 访问字典元素
+```python
+dict1 = {"name": "Tom", "age": 20, "city": "Shanghai"}
+print(dict1["name"])  # 输出结果：Tom
+print(dict1.get("name"))  # 输出结果：Tom
+print(dict1.get("address", "未找到"))  # 输出结果：未找到
+```
+
+### 9.1.3 遍历字典
+```python
+dict1 = {"name": "Tom", "age": 20, "city": "Shanghai"}  
+for key in dict1:
+    print(key)  # 输出结果：name age city
+```
+```python
+dict1 = {"name": "Tom", "age": 20, "city": "Shanghai"}  
+for item in dict1.items():
+    print(item)  # 输出结果：('name', 'Tom') ('age', 20) ('city', 'Shanghai')
+```
+# 10 自定义函数
+## 10.1 函数的基本使用
+### 10.1.1 定义函数
+```python
+def greet(name):
+  '''这是一个简单的函数，用于打招呼'''
+    print("Hello, " + name + "!")   
+```
+### 10.1.2 调用函数
+```python
+greet("Tom")  # 输出结果：Hello, Tom!
+```
+### 10.1.3 匿名参数
+匿名函数是指没有名字的函数，使用lambda关键字定义，应用在需要一个函数对象，但又不想命名一个函数的场合。首要用途是指定短小的回调函数。
