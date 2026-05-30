@@ -593,3 +593,32 @@ file = open(filename, mode)
 file.close()
 ```
 
+## 13.2 目录操作
+### 13.2.1 os和	os.path模块
+### 13.2.2 os路径
+- 相对路径
+```python
+import os
+print(os.getcwd())
+```
+- 绝对路径
+```python
+import os
+print(os.path.abspath('path'))
+```
+- 拼接路径
+```python
+import os
+print(os.path.join('path1', 'path2'))
+```
+
+# 14 异常处理及程序调试
+
+## 14.1 异常的基本使用
+### 14.1.1 异常的定义和使用
+```python
+try:
+    # 可能会引发异常的代码
+except Exception as e:
+    # 处理异常的代码
+finally:
