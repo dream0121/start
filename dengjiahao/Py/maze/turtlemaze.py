@@ -7,6 +7,6 @@ if __name__ == "__main__":
     turtle.colormode(255)
 #    level = turtle.numinput("选择难度", "请输入1-3", 1, 1, 3)
   #  levelinit()
-    turtle.penup()
+    turtle.pendown()
     turtle.goto(-300, 200)
     turtle.done()
