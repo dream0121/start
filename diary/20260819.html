@@ -43,31 +43,119 @@
       <h1>2026-08-19</h1>
       <div class="meta">日记</div>
       <div class="entry">
-        <p>4：30 醒，5：20 起.</p>
-        <p>5：30 - 6：50 晨练.</p>
-        <p>9：20 - 11：20 图书馆.</p>
+        <table border="1" cellspacing="0" cellpadding="8">
+          <thead>
+            <tr>
+              <th style="color:rgb(76, 189, 170)">时间</th>
+              <th style="color:rgb(110, 220, 198)">事项</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>4:30</td>
+              <td>醒，玩手机</td>
+            </tr>
+            <tr>
+              <td>5:20</td>
+              <td>起床</td>
+          </tbody>
+        </table>
+       
       </div>
       <hr>
       <div class="entry">
         <h1>HTML精简命令集</h1>
-      
+        
         <OL>
           <LI>基础骨架（标准最小模板）</LI>
-          <pre><code>
-            <!DOCTYPE html>
-            <html lang="zh-CN">
-              <head>
-                <meta charset="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>标题</title>
-              </head>
-              <body>
-                <!-- 内容 -->
-              </body>
-            </html>
-          </code></pre>
-          <LI>掌握了如何使用CSS进行样式设计。</LI>
-          <LI>了解了JavaScript的基本语法和功能。</LI>
+          <P><pre><code>
+            &lt;!DOCTYPE html&gt;
+            &lt;html lang="zh-CN"&gt;
+              &lt;head&gt;
+                &lt;meta charset="UTF-8" /&gt;
+                &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+                &lt;title&gt;标题&lt;/title&gt;
+              &lt;/head&gt;
+              &lt;body&gt;
+                &lt;!-- 内容 --&gt;
+              &lt;/body&gt;
+            &lt;/html&gt;
+          </code></pre></P>
+          <LI>文本标签</LI>
+          <p><pre><code>
+            &lt;h1&gt;标题1&lt;/h1&gt;
+            &lt;h2&gt;标题2&lt;/h2&gt;
+            &lt;h3&gt;标题3&lt;/h3&gt;
+            &lt;p&gt;段落文本&lt;/p&gt;
+            &lt;br /&gt; 换行
+            &lt;hr /&gt; 分割线
+            &lt;strong&gt;加粗&lt;/strong&gt;
+            &lt;em&gt;斜体&lt;/em&gt;
+            &lt;u&gt;下划线&lt;/u&gt;
+            &lt;del&gt;删除线&lt;/del&gt;
+            &lt;sub&gt;下标&lt;/sub&gt;
+            &lt;sup&gt;上标&lt;/sup&gt;
+            &lt;small&gt;小号文本&lt;/small&gt;
+            &lt;mark&gt;高亮文本&lt;/mark&gt;
+            &lt;pre&gt;&lt;code&gt;代码块&lt;/code&gt;&lt;/pre&gt;
+          </code></pre></p>
+          <LI>链接和图像标签</LI>
+          <p><pre><code>
+            &lt;a href="https://example.com"&gt;链接文本&lt;/a&gt;
+            &lt;a href="https://example.com" target="_blank"&gt;新窗口打开链接&lt;/a&gt;e
+            &lt;img src="image.jpg" alt="图片描述" /&gt;
+            &lt;a href="#id"&gt;锚点链接&lt;/a&gt;
+            &lt;a href="mailto:xxx@xx.com"&gt;发送邮件&lt;/a&gt;
+          </code></pre></p>
+          <li>列表</li>
+          <p><pre><code>
+            &lt;!-- 无序列表 --&gt;
+            &lt;ul&gt;
+              &lt;li&gt;列表项1&lt;/li&gt;
+              &lt;li&gt;列表项2&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;!-- 有序列表 --&gt;
+            &lt;ol&gt;
+              &lt;li&gt;列表项1&lt;/li&gt;
+              &lt;li&gt;列表项2&lt;/li&gt;
+              &lt;/ol&gt;
+              &lt;!-- 定义列表 --&gt;
+            &lt;dl&gt;
+              &lt;dt&gt;术语1&lt;/dt&gt;
+              &lt;dd&gt;定义1&lt;/dd&gt;
+              &lt;dt&gt;术语2&lt;/dt&gt;
+              &lt;dd&gt;定义2&lt;/dd&gt;
+            &lt;/dl&gt;
+          </code></pre></p>
+          <li>容器布局</li>
+          <p><pre><code>
+            &lt;div&gt;容器内容（独占一行）&lt;/div&gt;
+            &lt;span&gt;行内内容（不独占一行）&lt;/span&gt;
+            &lt;header&gt;页眉&lt;/header&gt;
+            &lt;nav&gt;导航&lt;/nav&gt;
+            &lt;main&gt;主要内容&lt;/main&gt;
+            &lt;section&gt;章节&lt;/section&gt;
+            &lt;article&gt;文章&lt;/article&gt;
+            &lt;aside&gt;侧边栏&lt;/aside&gt;
+            &lt;footer&gt;页脚&lt;/footer&gt;
+          </code></pre></p>
+          <li>表格</li>
+          <p><pre><code>
+            &lt;table&gt;
+              &lt;thead&gt;
+                &lt;tr&gt;
+                  &lt;th&gt;表头1&lt;/th&gt;
+                  &lt;th&gt;表头2&lt;/th&gt;
+                &lt;/tr&gt;
+              &lt;/thead&gt;
+              &lt;tbody&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;单元格1&lt;/td&gt;
+                  &lt;td&gt;单元格2&lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/tbody&gt;
+            &lt;/table&gt;
+          </code></pre></p>
         </OL>
       </div>
     </div>
